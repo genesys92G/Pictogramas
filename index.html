@@ -16,6 +16,35 @@ button{font-family:inherit;cursor:pointer;border:0}
 .screen{display:none;flex:1;min-height:0;flex-direction:column;gap:1.2vmin}
 .screen.on{display:flex}
 
+/* ---------- splash / levels ---------- */
+#splash{align-items:center;justify-content:center;text-align:center;gap:2.2vmin;padding-bottom:5vmin;position:relative;overflow:hidden}
+#splash>*:not(.drift){position:relative;z-index:2}
+.drift{position:absolute;bottom:-12vmin;z-index:1;opacity:.55;pointer-events:none;animation:drift linear infinite}
+@keyframes drift{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-125vh) rotate(40deg)}}
+.sp-title{font-size:clamp(2.6rem,12vmin,6.4rem);color:#fff;line-height:1;text-shadow:0 .8vmin 0 rgba(0,0,0,.18)}
+.sp-title span{display:inline-block;animation:bob 2.2s ease-in-out infinite}
+.sp-sub{font-size:clamp(1.1rem,3.8vmin,2.1rem);color:#fff;max-width:30em;line-height:1.25;text-wrap:balance;text-shadow:0 .4vmin 0 rgba(0,0,0,.15)}
+.sp-card{background:#fff;border-radius:4vmin;padding:1.6vmin 3vmin 1.2vmin;box-shadow:0 1.2vmin 0 rgba(0,0,0,.18);display:flex;gap:3vmin;align-items:flex-end}
+.spc{display:flex;flex-direction:column;align-items:center;gap:.8vmin}
+.spb{display:flex;flex-direction:column-reverse;justify-content:flex-start;height:22vmin;width:11vmin;background:#f6fbff;border:.5vmin solid #cfe0f1;border-bottom:.9vmin solid #7a5a2c;border-radius:1.6vmin 1.6vmin 0 0;align-items:center;overflow:hidden}
+.spb span{font-size:3.6vmin;line-height:3.8vmin;animation:pop .35s cubic-bezier(.3,1.6,.5,1) both}
+.spt{font-size:5vmin;border-radius:99px;padding:0 2vmin;line-height:1.3}
+.sp-steps{display:flex;gap:3vmin;color:#fff;font-size:clamp(1rem,3.4vmin,1.9rem)}
+.sp-steps b{font-weight:400;background:rgba(255,255,255,.28);border-radius:99px;padding:.2vmin 2.2vmin}
+.go-btn{background:#2ec27e;color:#fff;border-radius:99px;padding:1vmin 9vmin;font-size:clamp(1.9rem,8vmin,4rem);box-shadow:0 1.1vmin 0 #1c8a58;animation:pulseBtn 1.6s ease-in-out infinite}
+.go-btn:active{transform:translateY(1vmin);box-shadow:0 .1vmin 0 #1c8a58;animation:none}
+@keyframes pulseBtn{50%{transform:scale(1.06)}}
+.credit{position:absolute!important;left:0;right:0;bottom:1.4vmin;z-index:3;font-size:clamp(.8rem,2.6vmin,1.4rem);color:#fff;letter-spacing:.04em;text-shadow:0 .3vmin 0 rgba(0,0,0,.2)}
+#levels{align-items:center;justify-content:center;text-align:center;gap:3vmin;position:relative}
+.lvcards{display:flex;gap:3.5vmin;width:min(94vw,860px)}
+.lvcard{flex:1;background:#fff;border-radius:4vmin;padding:2.4vmin 1.4vmin;box-shadow:0 1.1vmin 0 rgba(0,0,0,.18);color:var(--ink);font-size:clamp(1.3rem,5.2vmin,2.8rem);transition:transform .12s}
+.lvcard:active{transform:translateY(.9vmin);box-shadow:0 .2vmin 0 rgba(0,0,0,.18)}
+.lvcard .em{display:block;font-size:clamp(3rem,18vmin,8rem);line-height:1.1;animation:bob 2.4s ease-in-out infinite}
+.lvcard small{display:block;font-size:.55em;color:#5b7088;margin-top:.5vmin}
+.lvcard:nth-child(1){background:#d9fbe6}.lvcard:nth-child(2){background:#e4e0ff}
+.hdr{display:flex;align-items:center;justify-content:center;position:relative;width:min(94vw,980px)}
+.hdr .back{position:absolute;left:0;background:#fff}
+.hdr .lvb{position:absolute;right:0;margin:0;background:#fff}
 /* ---------- menu ---------- */
 #menu,#end{align-items:center;justify-content:center;text-align:center;gap:3vmin}
 #menu{justify-content:flex-start;overflow-y:auto;gap:2vmin;padding:1vmin 0 3vmin}
@@ -25,9 +54,9 @@ button{font-family:inherit;cursor:pointer;border:0}
 .title{font-size:clamp(1.8rem,7.5vmin,4rem);color:#fff;text-shadow:0 .5vmin 0 rgba(0,0,0,.2)}
 .themes{display:grid;grid-template-columns:repeat(4,1fr);gap:2vmin;width:min(94vw,980px)}
 @media (max-width:700px){.themes{grid-template-columns:repeat(3,1fr)}}
-.theme{background:#fff;border-radius:3vmin;padding:1.2vmin .6vmin;font-size:clamp(.9rem,3.2vmin,1.6rem);box-shadow:0 1vmin 0 rgba(0,0,0,.18);color:var(--ink);transition:transform .12s}
+.theme{background:#fff;border-radius:3vmin;padding:2vmin .6vmin;font-size:clamp(1rem,3.8vmin,1.9rem);box-shadow:0 1vmin 0 rgba(0,0,0,.18);color:var(--ink);transition:transform .12s}
 .theme:active{transform:translateY(.8vmin);box-shadow:0 .2vmin 0 rgba(0,0,0,.18)}
-.theme .em{display:block;font-size:clamp(2rem,10vmin,5rem);line-height:1.1;animation:bob 2.4s ease-in-out infinite}
+.theme .em{display:block;font-size:clamp(2.2rem,12vmin,6rem);line-height:1.1;animation:bob 2.4s ease-in-out infinite}
 .theme:nth-child(2n) .em{animation-delay:-.8s}.theme:nth-child(3n) .em{animation-delay:-1.5s}
 
 /* ---------- top panel ---------- */
@@ -114,9 +143,25 @@ background-image:repeating-linear-gradient(to top,transparent 0,transparent calc
 <body>
 <div id="app">
 
-  <section id="menu" class="screen on">
-    <div class="title">📊 Pictograms</div>
-    <div class="levels"><button class="lv on" data-l="1">🌱 Level 1</button><button class="lv" data-l="2">🚀 Level 2</button></div>
+  <section id="splash" class="screen on">
+    <div class="sp-title">📊 <span>Pictograms</span></div>
+    <div class="sp-sub">Count the happy faces 😊 and discover what children like!</div>
+    <div class="sp-card" id="sp"></div>
+    <div class="sp-steps"><b>👀 Look</b><b>👆 Tap</b><b>🎉 Win</b></div>
+    <button class="go-btn" id="startBtn">▶ Start</button>
+    <div class="credit">designed by David Beleño - Math Education - 2026</div>
+  </section>
+
+  <section id="levels" class="screen">
+    <div class="hdr"><button class="mini back" data-to="splash" aria-label="back">⬅️</button><div class="title">Choose your level</div></div>
+    <div class="lvcards">
+      <button class="lvcard" data-l="1"><span class="em">🌱</span>Level 1<small>Count and compare</small></button>
+      <button class="lvcard" data-l="2"><span class="em">🚀</span>Level 2<small>Think and solve</small></button>
+    </div>
+  </section>
+
+  <section id="menu" class="screen">
+    <div class="hdr"><button class="mini back" data-to="levels" aria-label="back">⬅️</button><div class="title">Pick a topic</div><div class="lvb" id="menuLv"></div></div>
     <div class="themes" id="themes"></div>
   </section>
 
@@ -265,7 +310,20 @@ function start(t){
   PLAN=PLANS[level];rounds=[];for(let k=0;k<N;k++){i=k;rounds.push(make(PLAN[k][0],PLAN[k][1]))}
   i=0;render();
 }
-function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));window.speechSynthesis&&speechSynthesis.cancel()}
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));window.speechSynthesis&&speechSynthesis.cancel();
+  if(id!=='game'&&id!=='end'){const c=id==='splash'?['#6a5cff','#ff8ad8']:['#4facfe','#00c6ff'];
+    document.documentElement.style.setProperty('--bg1',c[0]);document.documentElement.style.setProperty('--bg2',c[1])}
+  if(id==='splash')splashPicto();
+}
+function splashPicto(){
+  const data=[['🍎',3,'#e63946'],['🍌',5,'#e08a00'],['🍇',2,'#7b2cbf']];
+  $('#sp').innerHTML=data.map(([e,n,c],k)=>`<div class="spc"><div class="spb">${Array.from({length:n},(_,j)=>`<span style="animation-delay:${(k*.45+j*.3).toFixed(2)}s">😊</span>`).join('')}</div><div class="spt" style="background:${c}">${e}</div></div>`).join('');
+}
+setInterval(()=>{if($('#splash').classList.contains('on'))splashPicto()},5200);
+(function(){const set=['😊','⭐','❤️','🍎','🎈','🌈','📊','🐶','🚀','🍕'];const sp=$('#splash');
+  for(let k=0;k<16;k++){const d=document.createElement('div');d.className='drift';d.textContent=set[k%set.length];
+    d.style.left=(3+k*6)%96+'%';d.style.fontSize=(5+rnd(6))+'vmin';d.style.animationDuration=(9+rnd(9))+'s';d.style.animationDelay=(-rnd(14))+'s';sp.appendChild(d)}})();
 function drawDots(){
   $('#dots').innerHTML=`<div class="lvb">${level===1?'🌱':'🚀'} ${level}</div>`+range(0,N-1).map(k=>`<div class="dot ${k<results.length?(results[k]?'ok':'retry'):(k===i?'now':'')}"></div>`).join('');
   hud($('#hud'));
@@ -370,11 +428,14 @@ function finish(){
 /* ---------- wiring ---------- */
 $('#themes').innerHTML=THEMES.map((t,k)=>`<button class="theme" data-k="${k}"><span class="em">${t.em}</span>${t.name}</button>`).join('');
 $('#themes').addEventListener('click',e=>{const b=e.target.closest('.theme');if(b){tone(600,.1);start(THEMES[+b.dataset.k])}});
-$('#home').onclick=()=>{show('menu');document.documentElement.style.setProperty('--bg1','#4facfe');document.documentElement.style.setProperty('--bg2','#00c6ff')};
+$('#home').onclick=()=>show('levels');
 $('#toMenu').onclick=()=>$('#home').onclick();
 $('#again').onclick=()=>start(theme);
 $('#next').onclick=()=>{level=2;start(theme)};
-document.querySelectorAll('.lv').forEach(b=>b.onclick=()=>{level=+b.dataset.l;document.querySelectorAll('.lv').forEach(x=>x.classList.toggle('on',x===b));tone(500,.08)});
+$('#startBtn').onclick=()=>{tone(600,.1);tone(800,.12,'sine',.14,.1);show('levels')};
+document.querySelectorAll('.lvcard').forEach(b=>b.onclick=()=>{level=+b.dataset.l;tone(600,.1);$('#menuLv').textContent=(level===1?'🌱':'🚀')+' '+level;show('menu')});
+document.querySelectorAll('.back').forEach(b=>b.onclick=()=>show(b.dataset.to));
+show('splash');
 $('#say').onclick=()=>speak(rounds[i].say);
 </script>
 </body>
