@@ -1,0 +1,2 @@
+# Pictogramas
+figuras
